@@ -1,0 +1,26 @@
+{
+	"folders": [
+	{
+		"follow_symlinks": true,
+		"path": ".",
+	}
+	],
+	"settings":
+	{
+		"tab_size" : 8,
+	},
+	"build_systems": [
+	{
+		"name": "libdispatch-c++",
+		"cmd": ["make", "test"],
+		"working_dir": "${project_path:${folder}}",
+
+		"variants": [
+		{
+			"name": "clean",
+			"cmd": ["make", "clean"],
+		}
+		]
+	}
+	]
+}
