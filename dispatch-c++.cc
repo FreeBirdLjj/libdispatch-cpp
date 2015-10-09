@@ -1,4 +1,4 @@
-#include <map>
+#include <unordered_map>
 
 #include "dispatch-c++.h"
 
@@ -82,12 +82,12 @@ namespace dispatch {
 
 	queue::queue(const std::string &label, const attr attr)
 	{
-		static std::map<queue::attr, dispatch_queue_attr_t> mapAttr = {
+		static const std::unordered_map<queue::attr, dispatch_queue_attr_t> mapAttr = {
 			{attr::SERIAL,     DISPATCH_QUEUE_SERIAL},
 			{attr::CONCURRENT, DISPATCH_QUEUE_CONCURRENT}
 		};
 
-		this->priQueue = dispatch_queue_create(label.c_str(), mapAttr[attr]);
+		this->priQueue = dispatch_queue_create(label.c_str(), mapAttr.at(attr));
 	}
 
 	queue::queue(const queue &q)
@@ -119,7 +119,7 @@ namespace dispatch {
 
 	queue queue::globalQueue(const priority priority)
 	{
-		static std::map<queue::priority, long> mapPriority = {
+		static const std::unordered_map<queue::priority, long> mapPriority = {
 			{priority::HIGH,       DISPATCH_QUEUE_PRIORITY_HIGH},
 			{priority::DEFAULT,    DISPATCH_QUEUE_PRIORITY_DEFAULT},
 			{priority::LOW,        DISPATCH_QUEUE_PRIORITY_LOW},
@@ -128,7 +128,7 @@ namespace dispatch {
 
 		queue q;
 
-		 q.priQueue = dispatch_get_global_queue(mapPriority[priority], 0);
+		 q.priQueue = dispatch_get_global_queue(mapPriority.at(priority), 0);
 
 		return q;
 	}
