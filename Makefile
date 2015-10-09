@@ -22,7 +22,7 @@ $(LIB_BIN): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 	$(RANLIB) $@
 
-test: $(TEST_BIN)
+test: $(LIB_BIN) $(TEST_BIN)
 	./$(TEST_BIN)
 
 clean:
