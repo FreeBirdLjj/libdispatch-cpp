@@ -1,11 +1,14 @@
 #include <iostream>
 #include <cassert>
+#include <atomic>
 
 #include "dispatch-c++.h"
 
 void test_dispatch_group()
 {
-	int a = 0;
+	std::atomic<int> a;
+
+	a = 0;
 
 	dispatch::group group;
 	dispatch::queue queue("main_test.dispatch_async", dispatch::queue::attr::CONCURRENT);
