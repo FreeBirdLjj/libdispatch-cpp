@@ -19,3 +19,7 @@ Just `make`. What you need are `dispatch-c++.h` and `libdispatch-c++.a`. The way
 `make test` to test the library can work on your compile toolchain. The expected result of `make test` is just printing "Success!" on terminal. `test_main.cpp` is an example of using `libdispatch-c++` in your program.
 
 Be careful with the asynchronous functions!
+
+## License
+
+BSD 2-Clause License.
