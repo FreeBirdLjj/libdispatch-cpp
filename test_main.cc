@@ -21,9 +21,7 @@ void test_dispatch_queue()
 
 void test_dispatch_group()
 {
-	int a;
-
-	a = 0;
+	int a = 0;
 
 	dispatch::group group;
 	dispatch::queue queue("main_test.dispatch_async", dispatch::queue::attr::SERIAL);
