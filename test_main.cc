@@ -21,12 +21,12 @@ void test_dispatch_queue()
 
 void test_dispatch_group()
 {
-	std::atomic<int> a;
+	int a;
 
 	a = 0;
 
 	dispatch::group group;
-	dispatch::queue queue("main_test.dispatch_async", dispatch::queue::attr::CONCURRENT);
+	dispatch::queue queue("main_test.dispatch_async", dispatch::queue::attr::SERIAL);
 
 	for (int i = 1; i <= 100; i++) {
 		group.async(queue, [=, &a] () {
